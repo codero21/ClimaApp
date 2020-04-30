@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		E333F8C6245A92DC004BAD48 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E333F8C5245A92DC004BAD48 /* AppDelegate.swift */; };
 		E333F8C8245A92DC004BAD48 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E333F8C7245A92DC004BAD48 /* SceneDelegate.swift */; };
-		E333F8CA245A92DC004BAD48 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E333F8C9245A92DC004BAD48 /* ViewController.swift */; };
+		E333F8CA245A92DC004BAD48 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E333F8C9245A92DC004BAD48 /* WeatherViewController.swift */; };
 		E333F8CD245A92DC004BAD48 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E333F8CB245A92DC004BAD48 /* Main.storyboard */; };
 		E333F8CF245A92DF004BAD48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E333F8CE245A92DF004BAD48 /* Assets.xcassets */; };
 		E333F8D2245A92DF004BAD48 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E333F8D0245A92DF004BAD48 /* LaunchScreen.storyboard */; };
@@ -19,7 +19,7 @@
 		E333F8C2245A92DC004BAD48 /* ClimaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClimaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E333F8C5245A92DC004BAD48 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E333F8C7245A92DC004BAD48 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E333F8C9245A92DC004BAD48 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E333F8C9245A92DC004BAD48 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		E333F8CC245A92DC004BAD48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E333F8CE245A92DF004BAD48 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E333F8D1245A92DF004BAD48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -56,15 +56,39 @@
 		E333F8C4245A92DC004BAD48 /* ClimaApp */ = {
 			isa = PBXGroup;
 			children = (
+				E333F8DB245A9527004BAD48 /* Models */,
+				E333F8DA245A950E004BAD48 /* Views */,
+				E333F8D9245A9505004BAD48 /* Controllers */,
 				E333F8C5245A92DC004BAD48 /* AppDelegate.swift */,
 				E333F8C7245A92DC004BAD48 /* SceneDelegate.swift */,
-				E333F8C9245A92DC004BAD48 /* ViewController.swift */,
-				E333F8CB245A92DC004BAD48 /* Main.storyboard */,
 				E333F8CE245A92DF004BAD48 /* Assets.xcassets */,
 				E333F8D0245A92DF004BAD48 /* LaunchScreen.storyboard */,
 				E333F8D3245A92DF004BAD48 /* Info.plist */,
 			);
 			path = ClimaApp;
+			sourceTree = "<group>";
+		};
+		E333F8D9245A9505004BAD48 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E333F8C9245A92DC004BAD48 /* WeatherViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E333F8DA245A950E004BAD48 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E333F8CB245A92DC004BAD48 /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E333F8DB245A9527004BAD48 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +162,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E333F8CA245A92DC004BAD48 /* ViewController.swift in Sources */,
+				E333F8CA245A92DC004BAD48 /* WeatherViewController.swift in Sources */,
 				E333F8C6245A92DC004BAD48 /* AppDelegate.swift in Sources */,
 				E333F8C8245A92DC004BAD48 /* SceneDelegate.swift in Sources */,
 			);
