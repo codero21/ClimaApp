@@ -19,29 +19,55 @@ struct WeatherManager {
     }
     
     func performRequest(urlString: String) {
-//1.        Create a URL
+        //1.        Create a URL
         if let url = URL(string: urlString) {
             //2.        Create a URL Session
             let session = URLSession(configuration: .default)
             
             //3.       Give the Session a Task
-            let task = session.dataTask(with: url, completionHandler: handle(data:response:error:))
+            //            let task = session.dataTask(with: url, completionHandler: handle)
+            let task = session.dataTask(with: url) { (data, response, error) in
+                if error != nil {
+                    print(error!)
+                    return
+                }
+                if let safeData = data {
+                    //                    Parse JSON Data - coonvert it into ta Swift Object
+                    self.parseJSON(weatherData: safeData)
                     
+                    //                    OLD CODE
+                    //                    let dataString = String(data: safeData, encoding: .utf8)
+                    //                    print(dataString)
+                }
+            }
+            
             //4.        Start the Task
             task.resume()
         }
         
     }
     
-    func handle(data: Data?, response: URLResponse?, error: Error?) {
-        if error != nil {
-            print(error!)
-            return
+    func parseJSON(weatherData: Data) {
+        let decoder = JSONDecoder()
+        
+        do {
+                let decodedData = try decoder.decode(WeatherDate.self, from: weatherData)
+            print(decodedData.weather[0].description)
+        } catch {
+            print(error)
         }
-        if let safeData = data {
-            let dataString = String(data: safeData, encoding: .utf8)
-            print(dataString)
-        }
+        
     }
+    
+    //    func handle(data: Data?, response: URLResponse?, error: Error?) {
+    //        if error != nil {
+    //            print(error!)
+    //            return
+    //        }
+    //        if let safeData = data {
+    //            let dataString = String(data: safeData, encoding: .utf8)
+    //            print(dataString)
+    //        }
+    //    }
     
 }
