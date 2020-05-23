@@ -7,9 +7,11 @@
 //
 
 import Foundation
+import CoreLocation
 
 protocol WeatherManagerDelegate {
-    func didUpdateWeather(weather: WeatherModel)
+    func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel)
+    func didFailWithError(error: Error)
 }
 
 struct WeatherManager {
@@ -18,14 +20,21 @@ struct WeatherManager {
     var delegate: WeatherManagerDelegate?
     
     
-    
     func fetchWeather(cityName: String) {
         let urlString = "\(weatherURL)&q=\(cityName)"
-        performRequest(urlString: urlString)
+        performRequest(with: urlString)
         print(urlString)
     }
     
-    func performRequest(urlString: String) {
+    func fetchWeather(latituade: CLLocationDegrees, longitude: CLLocationDegrees) {
+        let urlString = "\(weatherURL)&lat=\(latituade)&lon=\(longitude)"
+        performRequest(with: urlString)
+        print(latituade)
+        print(longitude)
+        //print(urlString)
+    }
+    
+    func performRequest(with urlString: String) {
         //1.        Create a URL
         if let url = URL(string: urlString) {
             //2.        Create a URL Session
@@ -40,7 +49,7 @@ struct WeatherManager {
                 if let safeData = data {
                     //                    Parse JSON Data - coonvert it into ta Swift Object
                     if let weather = self.parseJSON(weatherData: safeData) {
-                        self.delegate?.didUpdateWeather(weather: weather)
+                        self.delegate?.didUpdateWeather(self, weather: weather)
                     }
                 }
             }
@@ -61,10 +70,7 @@ struct WeatherManager {
             let temp = decodedData.main.temp
             let weather = WeatherModel(conditionId: id, cityName: cityName, temperature: temp)
             
-//            print("Code is: ", id)
-//            print(weather.conditionName)
             print(weather.temperatureString)
-            
             return weather
         } catch {
             print(error)
