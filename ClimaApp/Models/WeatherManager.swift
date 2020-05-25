@@ -47,7 +47,7 @@ struct WeatherManager {
                     return
                 }
                 if let safeData = data {
-                    //                    Parse JSON Data - coonvert it into ta Swift Object
+                    // Parse JSON Data - coonvert it into ta Swift Object
                     if let weather = self.parseJSON(weatherData: safeData) {
                         self.delegate?.didUpdateWeather(self, weather: weather)
                     }
